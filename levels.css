@@ -1,0 +1,266 @@
+/* Stili specifici per la pagina di selezione livelli */
+
+.title-art {
+    color: var(--primary-color);
+    font-size: 9px;
+    line-height: 1.2;
+    text-shadow: var(--glow);
+    animation: glow-pulse 2s ease-in-out infinite;
+    margin-bottom: 30px;
+}
+
+.level-subtitle {
+    font-size: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 50px;
+    color: var(--secondary-color);
+}
+
+.typing-text-fast {
+    display: inline-block;
+    animation: fade-in 0.5s ease-in;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.level-card {
+    border: 2px solid var(--border-color);
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.level-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, var(--primary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.level-card.unlocked:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border-color: var(--primary-color);
+}
+
+.level-card.unlocked:hover::before {
+    opacity: 0.1;
+}
+
+.level-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+}
+
+.level-number {
+    font-size: 14px;
+    color: var(--secondary-color);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.level-name {
+    font-size: 20px;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: var(--glow);
+    font-weight: bold;
+}
+
+.level-desc {
+    font-size: 13px;
+    color: var(--secondary-color);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 40px;
+}
+
+.level-status {
+    margin-bottom: 15px;
+}
+
+.status-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+    border: 1px solid;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.status-badge.unlocked {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.status-badge.completed {
+    color: #00ff00;
+    border-color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.status-badge.locked {
+    color: #ff5555;
+    border-color: #ff5555;
+}
+
+.level-card.completed {
+    border-color: #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+}
+
+.level-lock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.level-progress {
+    margin-top: 15px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    font-size: 11px;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+}
+
+.back-button-container {
+    margin-bottom: 40px;
+}
+
+.back-button {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 15px 40px;
+    font-size: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: var(--glow);
+    box-shadow: var(--glow);
+}
+
+.back-button:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--primary-color);
+    transform: scale(1.05);
+}
+
+.back-button:active {
+    transform: scale(0.98);
+}
+
+.reset-button {
+    background-color: transparent;
+    color: #ff5555;
+    border: 2px solid #ff5555;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px #ff5555;
+    box-shadow: 0 0 10px #ff5555;
+}
+
+.reset-button:hover {
+    background-color: #ff5555;
+    color: var(--bg-color);
+    box-shadow: 0 0 20px #ff5555;
+    transform: scale(1.05);
+}
+
+.reset-button:active {
+    transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .levels-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .title-art {
+        font-size: 7px;
+    }
+
+    .level-subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .level-name {
+        font-size: 18px;
+    }
+
+    .level-desc {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-art {
+        font-size: 5px;
+    }
+
+    .level-card {
+        padding: 20px;
+    }
+
+    .level-name {
+        font-size: 16px;
+    }
+
+    .back-button {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+}

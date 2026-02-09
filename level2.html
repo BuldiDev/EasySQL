@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasySQL - Livello 2: WHERE Clause</title>
+    <link rel="stylesheet" href="landing/style.css">
+    <link rel="stylesheet" href="level.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="level-container">
+        <div class="terminal-header">
+            <span class="path">C:\EASYSQL\LEVEL_02\WHERE_CLAUSE.EXE</span>
+            <span class="system-info">LVL_02 | XP: 0/100</span>
+        </div>
+        
+        <div class="level-content">
+            <!-- Header con titolo e progresso -->
+            <div class="level-header">
+                <div class="level-info">
+                    <button class="theory-button" onclick="openTheoryPopup()">
+                        TEORIA
+                    </button>
+                    <h1 class="level-title" id="levelTitle">LIVELLO 2: WHERE CLAUSE</h1>
+                    <p class="level-objective" id="levelObjective">Obiettivo: Impara a filtrare i dati con condizioni WHERE</p>
+                </div>
+                <div class="level-progress-header">
+                    <div class="progress-circle">
+                        <span class="progress-number">0/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenuto principale: split view -->
+            <div class="split-view">
+                <!-- Sinistra: Tabella e esempi -->
+                <div class="left-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">DATABASE: STUDENTI</span>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <!-- Tabella database -->
+                        <div class="database-table">
+                            <table class="data-table" id="databaseTable">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>nome</th>
+                                        <th>cognome</th>
+                                        <th>età</th>
+                                        <th>città</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Marco</td>
+                                        <td>Rossi</td>
+                                        <td>20</td>
+                                        <td>Roma</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Laura</td>
+                                        <td>Bianchi</td>
+                                        <td>22</td>
+                                        <td>Milano</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Andrea</td>
+                                        <td>Verdi</td>
+                                        <td>19</td>
+                                        <td>Roma</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Sofia</td>
+                                        <td>Neri</td>
+                                        <td>23</td>
+                                        <td>Napoli</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Matteo</td>
+                                        <td>Gialli</td>
+                                        <td>21</td>
+                                        <td>Milano</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Giulia</td>
+                                        <td>Blu</td>
+                                        <td>20</td>
+                                        <td>Roma</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Alessandro</td>
+                                        <td>Viola</td>
+                                        <td>24</td>
+                                        <td>Torino</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Esercizi caricati dinamicamente -->
+                        <div class="exercises-section">
+                            <h3 class="section-title">&gt; ESERCIZI</h3>
+                            <div id="exercisesList"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Destra: Console SQL -->
+                <div class="right-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">SQL CONSOLE</span>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <div class="console-section">
+                            <label class="console-label">INSERISCI LA TUA QUERY:</label>
+                            <textarea 
+                                class="sql-input" 
+                                placeholder="SELECT * FROM studenti WHERE età > 20;"
+                                spellcheck="false"
+                            ></textarea>
+                            
+                            <div class="console-buttons">
+                                <button class="execute-button" onclick="executeQuery()">
+                                    <span class="button-bracket">&gt;</span> ESEGUI <span class="button-bracket">&lt;</span>
+                                </button>
+                                <button class="clear-button" onclick="clearConsole()">
+                                    PULISCI
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Output risultati -->
+                        <div class="output-section">
+                            <div class="output-header">
+                                <span>&gt; OUTPUT:</span>
+                            </div>
+                            <div class="output-content" id="queryOutput">
+                                <div class="output-placeholder">
+                                    Nessun risultato. Esegui una query per visualizzare i dati.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback -->
+                        <div class="feedback-section" id="feedback" style="display: none;">
+                            <div class="feedback-content">
+                                <span class="feedback-icon">[OK]</span>
+                                <span class="feedback-text">Ottimo lavoro!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer con controlli -->
+            <div class="level-footer">
+                <button class="nav-button" onclick="goBackToLevels()">
+                    <span class="button-bracket">&lt;</span> LIVELLI
+                </button>
+                <div class="footer-stats">
+                    <span>ESERCIZI COMPLETATI: <strong id="completedCount">0/5</strong></span>
+                </div>
+                <button class="nav-button" onclick="nextLevel()" id="nextButton" disabled>
+                    PROSSIMO <span class="button-bracket">&gt;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup Teoria -->
+    <div id="theoryPopup" class="theory-popup" style="display: none;">
+        <div class="theory-popup-content">
+            <div class="theory-popup-header">
+                <h2 id="theoryTitle">TEORIA</h2>
+                <button class="close-popup" onclick="closeTheoryPopup()">X</button>
+            </div>
+            <div class="theory-popup-body" id="theoryContent">
+                <!-- Contenuto caricato dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="level.js"></script>
+</body>
+</html>

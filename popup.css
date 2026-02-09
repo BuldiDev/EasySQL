@@ -1,0 +1,219 @@
+/* Popup Teoria */
+.theory-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.theory-popup-content {
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    background-color: var(--bg-color);
+    border: 3px solid var(--border-color);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    animation: popup-appear 0.3s ease-out;
+}
+
+@keyframes popup-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.theory-popup-header {
+    background-color: var(--border-color);
+    color: var(--bg-color);
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.theory-popup-header h2 {
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.close-popup {
+    background: transparent;
+    border: 2px solid var(--bg-color);
+    color: var(--bg-color);
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-popup:hover {
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.theory-popup-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.theory-intro {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.theory-intro h3 {
+    color: var(--primary-color);
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: var(--glow);
+}
+
+.theory-intro p {
+    color: var(--secondary-color);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.theory-block {
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-left: 3px solid var(--primary-color);
+}
+
+.theory-subtitle {
+    color: var(--primary-color);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.code-example {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--primary-color);
+    padding: 12px 15px;
+    margin: 10px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.5px;
+    overflow-x: auto;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.theory-text {
+    color: var(--secondary-color);
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 10px 0 0 0;
+}
+
+.theory-keypoints {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+}
+
+.theory-keypoints h4 {
+    color: var(--primary-color);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.theory-keypoints ul {
+    list-style: none;
+    padding: 0;
+}
+
+.theory-keypoints li {
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: 1.8;
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.theory-keypoints li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
+.theory-examples {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--border-color);
+}
+
+.theory-examples h4 {
+    color: var(--primary-color);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.example-item {
+    margin-bottom: 20px;
+}
+
+.example-desc {
+    color: var(--secondary-color);
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+/* Responsive Popup */
+@media (max-width: 768px) {
+    .theory-popup-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .theory-popup-body {
+        padding: 20px;
+    }
+
+    .theory-intro h3 {
+        font-size: 16px;
+    }
+
+    .code-example {
+        font-size: 11px;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasySQL - Selezione Livello</title>
+    <link rel="stylesheet" href="landing/style.css">
+    <link rel="stylesheet" href="levels.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="container">
+        <div class="terminal-header">
+            <span class="path">C:\EASYSQL\LEVELS\SELECT.EXE</span>
+            <span class="system-info">XP: <span id="totalXP">0</span> | LIVELLI: <span id="levelProgress">0/6</span></span>
+        </div>
+        
+        <div class="content">
+            <div class="page-title">
+                <pre class="title-art">
+██╗     ███████╗██╗   ██╗███████╗██╗     ███████╗
+██║     ██╔════╝██║   ██║██╔════╝██║     ██╔════╝
+██║     █████╗  ██║   ██║█████╗  ██║     ███████╗
+██║     ██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║     ╚════██║
+███████╗███████╗ ╚████╔╝ ███████╗███████╗███████║
+╚══════╝╚══════╝  ╚═══╝  ╚══════╝╚══════╝╚══════╝
+                </pre>
+            </div>
+
+            <div class="level-subtitle">
+                <span class="typing-text-fast">SELEZIONA IL TUO LIVELLO</span>
+            </div>
+
+            <div class="levels-grid">
+                <!-- Livello 1 - UNLOCKED -->
+                <div class="level-card unlocked" data-level="1" onclick="selectLevel(1)">
+                    <div class="level-number">LVL 01</div>
+                    <div class="level-name">SELECT BASICS</div>
+                    <div class="level-desc">Impara le basi del SELECT</div>
+                    <div class="level-status">
+                        <span class="status-badge unlocked">DISPONIBILE</span>
+                    </div>
+                    <div class="level-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0/5 COMPLETATI</span>
+                    </div>
+                </div>
+
+                <!-- Livello 2 - LOCKED -->
+                <div class="level-card locked" data-level="2" onclick="selectLevel(2)">
+                    <div class="level-number">LVL 02</div>
+                    <div class="level-name">WHERE & FILTERS</div>
+                    <div class="level-desc">Filtra i dati con WHERE</div>
+                    <div class="level-status">
+                        <span class="status-badge locked">BLOCCATO</span>
+                    </div>
+                    <div class="level-lock"></div>
+                </div>
+
+                <!-- Livello 3 - LOCKED -->
+                <div class="level-card locked" data-level="3" onclick="selectLevel(3)">
+                    <div class="level-number">LVL 03</div>
+                    <div class="level-name">ORDER BY</div>
+                    <div class="level-desc">Ordina i risultati</div>
+                    <div class="level-status">
+                        <span class="status-badge locked">BLOCCATO</span>
+                    </div>
+                    <div class="level-lock"></div>
+                </div>
+
+                <!-- Livello 4 - LOCKED -->
+                <div class="level-card locked" data-level="4" onclick="selectLevel(4)">
+                    <div class="level-number">LVL 04</div>
+                    <div class="level-name">AGGREGATION</div>
+                    <div class="level-desc">Funzioni COUNT, SUM, AVG</div>
+                    <div class="level-status">
+                        <span class="status-badge locked">BLOCCATO</span>
+                    </div>
+                    <div class="level-lock"></div>
+                </div>
+
+                <!-- Livello 5 - LOCKED -->
+                <div class="level-card locked" data-level="5" onclick="selectLevel(5)">
+                    <div class="level-number">LVL 05</div>
+                    <div class="level-name">GROUP BY</div>
+                    <div class="level-desc">Raggruppa i dati</div>
+                    <div class="level-status">
+                        <span class="status-badge locked">BLOCCATO</span>
+                    </div>
+                    <div class="level-lock"></div>
+                </div>
+
+                <!-- Livello 6 - LOCKED -->
+                <div class="level-card locked" data-level="6" onclick="selectLevel(6)">
+                    <div class="level-number">LVL 06</div>
+                    <div class="level-name">JOINS</div>
+                    <div class="level-desc">Unisci tabelle multiple</div>
+                    <div class="level-status">
+                        <span class="status-badge locked">BLOCCATO</span>
+                    </div>
+                    <div class="level-lock"></div>
+                </div>
+            </div>
+
+            <div class="back-button-container">
+                <button class="back-button" onclick="goBack()">
+                    <span class="button-bracket">&lt;</span> TORNA AL MENU <span class="button-bracket">&gt;</span>
+                </button>
+                <button class="reset-button" onclick="resetProgress()">
+                    RESET PROGRESSI
+                </button>
+            </div>
+
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-label">LIVELLI COMPLETATI:</span>
+                    <span class="status-value">0/6</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">ESPERIENZA:</span>
+                    <span class="status-value">0 XP</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">GRADO:</span>
+                    <span class="status-value">PRINCIPIANTE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="levels.js"></script>
+</body>
+</html>

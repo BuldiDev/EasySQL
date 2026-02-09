@@ -1,0 +1,135 @@
+{
+  "levelId": 1,
+  "title": "SELECT BASICS",
+  "objective": "Impara a selezionare dati da una tabella",
+  "xpTotal": 100,
+  "theory": {
+    "title": "IL COMANDO SELECT",
+    "introduction": "Il comando SELECT è il più importante in SQL. Serve per recuperare (selezionare) dati da una o più tabelle del database. È il fondamento di qualsiasi interrogazione al database.",
+    "sections": [
+      {
+        "subtitle": "Sintassi Base",
+        "code": "SELECT colonne FROM nome_tabella;",
+        "explanation": "Questa è la struttura fondamentale di una query SELECT. Dobbiamo sempre specificare COSA vogliamo (le colonne) e DA DOVE lo vogliamo prendere (la tabella)."
+      },
+      {
+        "subtitle": "Selezionare Tutte le Colonne",
+        "code": "SELECT * FROM tabella;",
+        "explanation": "L'asterisco (*) è un carattere speciale che significa \"tutte le colonne\". È utile quando vogliamo vedere tutti i dati di una tabella senza dover elencare ogni singola colonna."
+      },
+      {
+        "subtitle": "Selezionare Colonne Specifiche",
+        "code": "SELECT colonna1, colonna2, colonna3 FROM tabella;",
+        "explanation": "Possiamo scegliere esattamente quali colonne vogliamo vedere, elencandole separate da virgole. L'ordine in cui le elenchiamo sarà l'ordine in cui appariranno nei risultati."
+      },
+      {
+        "subtitle": "Eliminare Duplicati con DISTINCT",
+        "code": "SELECT DISTINCT colonna FROM tabella;",
+        "explanation": "Quando una colonna contiene valori ripetuti, DISTINCT ci permette di vedere solo i valori unici, eliminando i duplicati. È molto utile per capire quali valori diversi esistono in una colonna."
+      }
+    ],
+    "keyPoints": [
+      "Ogni comando SQL termina con punto e virgola (;)",
+      "SELECT è case-insensitive: SELECT, select o SeLeCt funzionano tutti",
+      "I nomi delle colonne devono corrispondere esattamente a quelli della tabella",
+      "L'ordine delle colonne nel SELECT determina l'ordine nel risultato"
+    ],
+    "examples": [
+      {
+        "description": "Vedere tutti i dati degli studenti",
+        "code": "SELECT * FROM studenti;"
+      },
+      {
+        "description": "Vedere solo nomi e città",
+        "code": "SELECT nome, città FROM studenti;"
+      },
+      {
+        "description": "Quali città ci sono (senza ripetizioni)",
+        "code": "SELECT DISTINCT città FROM studenti;"
+      }
+    ]
+  },
+  "database": {
+    "tableName": "studenti",
+    "columns": ["id", "nome", "cognome", "età", "città"],
+    "data": [
+      { "id": 1, "nome": "Marco", "cognome": "Rossi", "età": 20, "città": "Roma" },
+      { "id": 2, "nome": "Laura", "cognome": "Bianchi", "età": 22, "città": "Milano" },
+      { "id": 3, "nome": "Giovanni", "cognome": "Verdi", "età": 19, "città": "Napoli" },
+      { "id": 4, "nome": "Sara", "cognome": "Neri", "età": 21, "città": "Torino" },
+      { "id": 5, "nome": "Luca", "cognome": "Gialli", "età": 23, "città": "Roma" }
+    ]
+  },
+  "exercises": [
+    {
+      "id": 1,
+      "title": "Seleziona Tutto",
+      "description": "Scrivi una query che restituisca <strong>tutte le colonne</strong> e <strong>tutte le righe</strong> dalla tabella <code>studenti</code>.",
+      "expectedResult": "5 righe, 5 colonne",
+      "hint": "Usa l'asterisco (*) per selezionare tutte le colonne: <code>SELECT * FROM studenti;</code>",
+      "solution": "SELECT * FROM studenti;",
+      "validation": {
+        "regex": "SELECT\\s+\\*\\s+FROM\\s+studenti",
+        "expectedColumns": ["id", "nome", "cognome", "età", "città"],
+        "expectedRows": 5
+      },
+      "xp": 20
+    },
+    {
+      "id": 2,
+      "title": "Colonne Specifiche",
+      "description": "Scrivi una query che restituisca <strong>solo le colonne</strong> <code>nome</code> e <code>cognome</code> di tutti gli studenti.",
+      "expectedResult": "5 righe, 2 colonne (nome, cognome)",
+      "hint": "Elenca le colonne separate da virgola: <code>SELECT nome, cognome FROM studenti;</code>",
+      "solution": "SELECT nome, cognome FROM studenti;",
+      "validation": {
+        "regex": "SELECT\\s+nome\\s*,\\s*cognome\\s+FROM\\s+studenti",
+        "expectedColumns": ["nome", "cognome"],
+        "expectedRows": 5
+      },
+      "xp": 20
+    },
+    {
+      "id": 3,
+      "title": "Una Colonna",
+      "description": "Scrivi una query che restituisca <strong>solo la colonna</strong> <code>città</code> di tutti gli studenti (includi anche le città duplicate).",
+      "expectedResult": "5 righe, 1 colonna (città)",
+      "hint": "Seleziona una sola colonna: <code>SELECT città FROM studenti;</code>",
+      "solution": "SELECT città FROM studenti;",
+      "validation": {
+        "regex": "SELECT\\s+città\\s+FROM\\s+studenti(?!\\s+WHERE)",
+        "expectedColumns": ["città"],
+        "expectedRows": 5
+      },
+      "xp": 20
+    },
+    {
+      "id": 4,
+      "title": "Valori Unici",
+      "description": "Scrivi una query che restituisca la colonna <code>città</code>, ma <strong>senza valori duplicati</strong>. Ogni città deve apparire una sola volta.",
+      "expectedResult": "4 righe, 1 colonna (città univoche)",
+      "hint": "Usa DISTINCT per rimuovere duplicati: <code>SELECT DISTINCT città FROM studenti;</code>",
+      "solution": "SELECT DISTINCT città FROM studenti;",
+      "validation": {
+        "regex": "SELECT\\s+DISTINCT\\s+città\\s+FROM\\s+studenti",
+        "expectedColumns": ["città"],
+        "distinct": true
+      },
+      "xp": 20
+    },
+    {
+      "id": 5,
+      "title": "Tre Colonne",
+      "description": "Scrivi una query che restituisca <strong>tre colonne specifiche</strong>: <code>nome</code>, <code>età</code> e <code>città</code> di tutti gli studenti.",
+      "expectedResult": "5 righe, 3 colonne (nome, età, città)",
+      "hint": "Elenca le tre colonne nell'ordine richiesto: <code>SELECT nome, età, città FROM studenti;</code>",
+      "solution": "SELECT nome, età, città FROM studenti;",
+      "validation": {
+        "regex": "SELECT\\s+nome\\s*,\\s*età\\s*,\\s*città\\s+FROM\\s+studenti",
+        "expectedColumns": ["nome", "età", "città"],
+        "expectedRows": 5
+      },
+      "xp": 20
+    }
+  ]
+}

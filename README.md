@@ -1,3 +1,7 @@
+
+LIVE DEMO: https://buldidev.github.io/EasySQL
+
+
 # EasySQL
 
 Piattaforma web educativa per imparare SQL attraverso esercizi progressivi, feedback immediato e gamificazione con sistema XP.
